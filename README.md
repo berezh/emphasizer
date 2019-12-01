@@ -16,65 +16,11 @@ npm install emphasizer
 
 ## Methods
 
--   [emphasizeStyleProperty()](#emphasizestyleproperty)
 -   [emphasizeStyle()](#emphasizestyle)
+-   [emphasizeStyleProperty()](#emphasizestyleproperty)
 -   [emphasizeNumber()](#emphasizenumber)
 
 <br/>
-
-### emphasizeStyleProperty(...)
-
-```jsx
-function emphasizeStyleProperty(
-    fromValue: string | number,
-    toValue: string | number,
-    rate: number
-): string | number | undefined;
-```
-
-_Parameters:_
-
--   `fromValue`: style property value with lowest significance
--   `toValue`: style property value with highest significance
--   `rate`: rate of emphasized style property. Must be fraction from `0` to `1`
-
-_Returns:_ emphasized style property value
-
-```jsx
-function emphasizeStyleProperty(
-    fromValue: string | number,
-    toValue: string | number,
-    fromRate: number,
-    toRate: number,
-    rate: number,
-): string | number | undefined;
-```
-
-_Parameters:_
-
--   `fromValue`: style property value with lowest significance
--   `toValue`: style property value with highest significance
--   `fromRate`: min rate value
--   `toRate`: max rate value
--   `rate`: rate of emphasized style property. Must be value from `fromRate` to `toRate`
-
-_Returns:_ emphasized style property value
-
-**Example**
-
-```js
-// dimention
-emphasizeStyleProperty('8px', '12px', 0.5); // => '5px'
-emphasizeStyleProperty('8px', '12px', 0, 2, 1); // => '5px'
-
-emphasizeStyleProperty('8px 8px', '12px 12px', 0.5); // => '10px 10px'
-emphasizeStyleProperty('8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '10px 10px 10px 10px'
-
-// color
-emphasizeStyleProperty('#222222', '#444444', 0.5); // => '#333333'
-emphasizeStyleProperty('green', 'blue', 0.5); // => '#004080'
-emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#323232'
-```
 
 ### emphasizeStyle(...)
 
@@ -132,6 +78,60 @@ expect(
     margin: '4px 4px',
     color: '#555555',
 });
+```
+
+### emphasizeStyleProperty(...)
+
+```jsx
+function emphasizeStyleProperty(
+    fromValue: string | number,
+    toValue: string | number,
+    rate: number
+): string | number | undefined;
+```
+
+_Parameters:_
+
+-   `fromValue`: style property value with lowest significance
+-   `toValue`: style property value with highest significance
+-   `rate`: rate of emphasized style property. Must be fraction from `0` to `1`
+
+_Returns:_ emphasized style property value
+
+```jsx
+function emphasizeStyleProperty(
+    fromValue: string | number,
+    toValue: string | number,
+    fromRate: number,
+    toRate: number,
+    rate: number,
+): string | number | undefined;
+```
+
+_Parameters:_
+
+-   `fromValue`: style property value with lowest significance
+-   `toValue`: style property value with highest significance
+-   `fromRate`: min rate value
+-   `toRate`: max rate value
+-   `rate`: rate of emphasized style property. Must be value from `fromRate` to `toRate`
+
+_Returns:_ emphasized style property value
+
+**Example**
+
+```js
+// dimention
+emphasizeStyleProperty('8px', '12px', 0.5); // => '5px'
+emphasizeStyleProperty('8px', '12px', 0, 2, 1); // => '5px'
+
+emphasizeStyleProperty('8px 8px', '12px 12px', 0.5); // => '10px 10px'
+emphasizeStyleProperty('8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '10px 10px 10px 10px'
+
+// color
+emphasizeStyleProperty('#222222', '#444444', 0.5); // => '#333333'
+emphasizeStyleProperty('green', 'blue', 0.5); // => '#004080'
+emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#323232'
 ```
 
 ### emphasizeNumber(...)
