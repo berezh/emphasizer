@@ -1,5 +1,5 @@
 import { toHex } from 'jolor';
-import { Emphasizer } from '../../src/emphasizer';
+import { emphasizeColor, splitColor } from '../../src';
 
 it('Emphasizer-number: adge', () => {
     emphColor([0, 100, 200], [10, 110, 210], 0, 10, 5, [5, 105, 205]);
@@ -16,15 +16,15 @@ it('Emphasizer: minus', () => {
 });
 
 function emphColor(from: number[], to: number[], fromRate: number, toRate: number, rate: number, value: number[]) {
-    expect(Emphasizer.color(toHex(from) as any, toHex(to) as any, fromRate, toRate, rate)).toEqual(toHex(value));
+    expect(emphasizeColor(toHex(from) as any, toHex(to) as any, fromRate, toRate, rate)).toEqual(toHex(value));
 }
 
 it('color: range', () => {
-    expect(Emphasizer.colorRange('#000', '#333', 4)).toMatchObject(['#000000', '#111111', '#222222', '#333333']);
+    expect(splitColor('#000', '#333', 4)).toMatchObject(['#000000', '#111111', '#222222', '#333333']);
 });
 
 it('color: range 2', () => {
-    expect(Emphasizer.colorRange('#aaa', '#888', 4)).toMatchObject(['#aaaaaa', '#9f9f9f', '#939393', '#888888']);
+    expect(splitColor('#aaa', '#888', 4)).toMatchObject(['#aaaaaa', '#9f9f9f', '#939393', '#888888']);
 });
 
 // colorRange("#aaa", "#888", 4)

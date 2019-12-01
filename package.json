@@ -1,6 +1,6 @@
 {
     "name": "emphasizer",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "React style emphasizer",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -40,7 +40,7 @@
         "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
         "test": "jest",
         "prepublishOnly": "npm run test && npm run lint",
-        "lint": "eslint ./src/**/*.ts ./src/**/*.tsx ./example/src/**/*.ts ./example/src/**/*.tsx",
+        "lint": "eslint ./src/**/*.ts",
         "lint:fix": "npm run lint -- --fix"
     },
     "repository": {
@@ -48,11 +48,12 @@
         "url": "git+https://github.com/berezh/emphasizer.git"
     },
     "keywords": [
-        "tag-cloud",
-        "tagcloud",
+        "style",
+        "css",
         "react",
         "number",
-        "emphase"
+        "emphase",
+        "emphaser"
     ],
     "author": "Vadym Poberezhnyi",
     "license": "MIT",

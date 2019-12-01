@@ -1,4 +1,4 @@
-import { SizeValue } from "../../src/emphasizer";
+import { SizeValue } from "../../src";
 
 it("Size-Value: isSize", () => {
     // isSingle

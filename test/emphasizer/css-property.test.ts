@@ -1,4 +1,4 @@
-import { Emphasizer } from '../../src/emphasizer';
+import { emphasizeStyleProperty } from '../../src';
 
 it('cssProperty: size-value', () => {
     cssProperty('0px', '10px', 0, 10, 5, '5px');
@@ -16,5 +16,5 @@ it('cssProperty: dimantion', () => {
 });
 
 function cssProperty(from: string, to: string, fromRate: number, toRate: number, rate: number, value: string) {
-    expect(Emphasizer.styleProperty(from, to, fromRate, toRate, rate)).toEqual(value);
+    expect(emphasizeStyleProperty(from, to, fromRate, toRate, rate)).toEqual(value);
 }
