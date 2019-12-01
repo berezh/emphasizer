@@ -1,5 +1,5 @@
 import { toHex } from 'jolor';
-import { emphasizeColor, splitColor } from '../../src';
+import { emphasizeColor, splitColor } from '../src';
 
 it('Emphasizer-number: adge', () => {
     emphColor([0, 100, 200], [10, 110, 210], 0, 10, 5, [5, 105, 205]);

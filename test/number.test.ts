@@ -1,4 +1,4 @@
-import { emphasizeNumber } from '../../src';
+import { emphasizeNumber } from '../src';
 
 it('Emphasizer-number: simple', () => {
     expect(emphasizeNumber(0, 10, 0)).toEqual(0);

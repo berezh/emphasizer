@@ -14,27 +14,27 @@ React style emphasizer
 npm install emphasizer
 ```
 
-## emphasizeStyleProperty(...)
+### emphasizeStyle(...)
 
 ```jsx
 ```
 
-## emphasizeStyle(...)
+### emphasizeStyleProperty(...)
 
 ```jsx
 ```
 
-## emphasizeColor(...)
+### emphasizeColor(...)
 
 ```jsx
 ```
 
-## splitColor(...)
+### splitColor(...)
 
 ```jsx
 ```
 
-## emphasizeNumber(...)
+### emphasizeNumber(...)
 
 ```jsx
 ```
