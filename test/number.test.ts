@@ -5,6 +5,7 @@ it('Emphasizer-number: simple', () => {
     expect(emphasizeNumber(0, 10, 1)).toEqual(10);
     //
     expect(emphasizeNumber(0, 10, 0.5)).toEqual(5);
+    expect(emphasizeNumber(0, 10, 2, 4, 3)).toEqual(5);
 });
 
 it('Emphasizer-number: same', () => {

@@ -18,10 +18,10 @@ function emphasizeStyleBase(
     return result;
 }
 
-function emphasizeStyle(from: React.CSSProperties, to: React.CSSProperties, rate: number): React.CSSProperties;
+function emphasizeStyle(fromStyle: React.CSSProperties, toStyle: React.CSSProperties, rate: number): React.CSSProperties;
 function emphasizeStyle(
-    from: React.CSSProperties,
-    to: React.CSSProperties,
+    fromStyle: React.CSSProperties,
+    toStyle: React.CSSProperties,
     fromRate: number,
     toRate: number,
     rate: number,

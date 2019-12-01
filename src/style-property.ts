@@ -50,10 +50,10 @@ function emphasizeStylePropertyBase(
     return undefined;
 }
 
-function emphasizeStyleProperty(from: string | number, to: string | number, rate: number): string | number | undefined;
+function emphasizeStyleProperty(fromValue: string | number, toValue: string | number, rate: number): string | number | undefined;
 function emphasizeStyleProperty(
-    from: string | number,
-    to: string | number,
+    fromValue: string | number,
+    toValue: string | number,
     fromRate: number,
     toRate: number,
     rate: number,
