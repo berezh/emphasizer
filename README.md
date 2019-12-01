@@ -56,7 +56,7 @@ _Parameters:_
 
 _Returns:_ emphasized style
 
-**Example**
+_Example_
 
 ```js
 expect(
@@ -118,7 +118,7 @@ _Parameters:_
 
 _Returns:_ emphasized style property value
 
-**Example**
+_Example_
 
 ```js
 // dimention
@@ -162,7 +162,7 @@ _Parameters:_
 
 _Returns:_ emphasized value
 
-**Example**
+_Example_
 
 ```js
 emphasizeNumber(0, 10, 0.5); // => 5
