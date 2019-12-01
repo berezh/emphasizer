@@ -1,5 +1,12 @@
 import { emphasizeNumber } from '../../src';
 
+it('Emphasizer-number: simple', () => {
+    expect(emphasizeNumber(0, 10, 0)).toEqual(0);
+    expect(emphasizeNumber(0, 10, 1)).toEqual(10);
+    //
+    expect(emphasizeNumber(0, 10, 0.5)).toEqual(5);
+});
+
 it('Emphasizer-number: same', () => {
     expect(emphasizeNumber(0, 10, 0, 10, 0)).toEqual(0);
     expect(emphasizeNumber(0, 10, 0, 10, 10)).toEqual(10);
