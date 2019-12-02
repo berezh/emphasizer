@@ -122,8 +122,8 @@ _Example_
 
 ```js
 // dimention
-emphasizeStyleProperty('8px', '12px', 0.5); // => '5px'
-emphasizeStyleProperty('8px', '12px', 0, 2, 1); // => '5px'
+emphasizeStyleProperty('8px', '12px', 0.5); // => '10px'
+emphasizeStyleProperty('8px', '12px', 0, 2, 1); // => '10px'
 
 emphasizeStyleProperty('8px 8px', '12px 12px', 0.5); // => '10px 10px'
 emphasizeStyleProperty('8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '10px 10px 10px 10px'

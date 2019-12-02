@@ -43,3 +43,4 @@ it('styleProperty: color - name', () => {
 it('styleProperty: color - rgb', () => {
     expect(emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5)).toEqual('#323232');
 });
+

@@ -29,8 +29,8 @@ function sizeValue(
 }
 
 function emphasizeStylePropertyBase(
-    from: string | number,
-    to: string | number,
+    from: string | number | undefined,
+    to: string | number | undefined,
     fromRate: number,
     toRate: number,
     rate: number,
@@ -42,29 +42,27 @@ function emphasizeStylePropertyBase(
             return emphasizeColor(from, to, fromRate, toRate, rate);
         } else if (SizeValue.isSize(from)) {
             return sizeValue(new SizeValue(from), new SizeValue(to), fromRate, toRate, rate);
-        } else {
-            return from;
         }
     }
 
-    return undefined;
+    return from === undefined ? to : from;
 }
 
 function emphasizeStyleProperty(
-    fromValue: string | number,
-    toValue: string | number,
+    fromValue: string | number | undefined,
+    toValue: string | number | undefined,
     rate: number,
 ): string | number | undefined;
 function emphasizeStyleProperty(
-    fromValue: string | number,
-    toValue: string | number,
+    fromValue: string | number | undefined,
+    toValue: string | number | undefined,
     fromRate: number,
     toRate: number,
     rate: number,
 ): string | number | undefined;
 function emphasizeStyleProperty(
-    p1: string | number,
-    p2: string | number,
+    p1: string | number | undefined,
+    p2: string | number | undefined,
     p3: number,
     p4?: number,
     p5?: number,
