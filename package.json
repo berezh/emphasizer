@@ -1,6 +1,6 @@
 {
     "name": "emphasizer",
-    "version": "1.1.5",
+    "version": "1.1.7",
     "description": "React style emphasizer",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -49,6 +49,8 @@
     },
     "keywords": [
         "style",
+        "react-style",
+        "inline-style",
         "css",
         "rate",
         "react",
