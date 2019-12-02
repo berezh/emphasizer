@@ -9,8 +9,9 @@ function emphasizeStyleBase(
 ): React.CSSProperties {
     const result: React.CSSProperties = {};
 
-    for (const key in from) {
-        if (from.hasOwnProperty(key) && to.hasOwnProperty(key)) {
+    const keys = [...Object.keys(from), ...Object.keys(to)];
+    for (const key of keys) {
+        if (from.hasOwnProperty(key) || to.hasOwnProperty(key)) {
             (result as any)[key] = emphasizeStyleProperty((from as any)[key], (to as any)[key], fromRate, toRate, rate);
         }
     }
