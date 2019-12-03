@@ -26,19 +26,19 @@ export class DimentionParser {
     }
 
     public static isSingle(raw: string): boolean {
-        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention(), raw);
+        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention1, raw);
     }
 
     public static isDouble(raw: string): boolean {
-        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention(2), raw);
+        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention2, raw);
     }
 
     public static isTriple(raw: string): boolean {
-        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention(3), raw);
+        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention3, raw);
     }
 
     public static isQuadro(raw: string): boolean {
-        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention(4), raw);
+        return DimentionParser.isMatched(StylePropertyPatterns.completeDimention4, raw);
     }
 
     public static isMatched(pattern: RegExp | string, raw: string): boolean {
@@ -84,12 +84,12 @@ export class DimentionParser {
 
     private parseUnits(raw: string): DimentionUnit[] {
         const result: DimentionUnit[] = [];
-        const matches = raw.match(StylePropertyPatterns.dimention());
+        const matches = raw.match(StylePropertyPatterns.dimention);
         if (matches) {
             for (const match of matches) {
                 const unit = {
-                    value: parseFloat(this.firstMatch(StylePropertyPatterns.dimentionValue(), match) || '0'),
-                    dimension: this.firstMatch(StylePropertyPatterns.hasDimentionUnit(), match),
+                    value: parseFloat(this.firstMatch(StylePropertyPatterns.dimentionValue, match) || '0'),
+                    dimension: this.firstMatch(StylePropertyPatterns.hasDimentionUnit, match),
                 };
                 result.push(unit);
             }
