@@ -1,4 +1,4 @@
-import { emphasizeStyleProperty } from '../src';
+import { emphasizeStyleProperty } from '../../src';
 
 it('cssProperty: size-value', () => {
     cssProperty('0px', '10px', 0, 10, 5, '5px');

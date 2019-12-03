@@ -1,18 +1,18 @@
-import { emphasizeNumber } from './number';
-import { SizeUnit, SizeValue } from './size-value';
-import { emphasizeColor } from './color';
+import { emphasizeNumber } from '../number';
+import { DimentionUnit, DimentionParser } from './parsers';
+import { emphasizeColor } from '../color';
 import { Color } from 'jolor';
 
 function sizeValue(
-    fromValue: SizeValue,
-    toValue: SizeValue,
+    fromValue: DimentionParser,
+    toValue: DimentionParser,
     fromRate: number,
     toRate: number,
     rate: number,
 ): string | undefined {
     if (fromValue.isMatched(toValue)) {
         const dimension = fromValue.dimension;
-        const units: SizeUnit[] = [];
+        const units: DimentionUnit[] = [];
         for (let i = 0; i < fromValue.units.length; i++) {
             const fromUnit = fromValue.units[i];
             const toUnit = toValue.units[i];
@@ -22,7 +22,7 @@ function sizeValue(
             });
         }
 
-        return new SizeValue(units).toString();
+        return new DimentionParser(units).toString();
     }
 
     return undefined;
@@ -40,8 +40,8 @@ function emphasizeStylePropertyBase(
     } else if (typeof from === 'string' && typeof to === 'string') {
         if (Color.isColor(from)) {
             return emphasizeColor(from, to, fromRate, toRate, rate);
-        } else if (SizeValue.isSize(from)) {
-            return sizeValue(new SizeValue(from), new SizeValue(to), fromRate, toRate, rate);
+        } else if (DimentionParser.isSize(from)) {
+            return sizeValue(new DimentionParser(from), new DimentionParser(to), fromRate, toRate, rate);
         }
     }
 
