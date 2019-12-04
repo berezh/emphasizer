@@ -1,4 +1,8 @@
-import { emphasizeStyleProperty } from '../src';
+import { emphasizeStyleProperty } from '../../src';
+
+function cssProperty(from: string, to: string, fromRate: number, toRate: number, rate: number, value: string) {
+    expect(emphasizeStyleProperty(from, to, fromRate, toRate, rate)).toEqual(value);
+}
 
 it('cssProperty: size-value', () => {
     cssProperty('0px', '10px', 0, 10, 5, '5px');
@@ -14,10 +18,6 @@ it('cssProperty: color', () => {
 it('cssProperty: dimantion', () => {
     cssProperty('0 0px', '10 10px', 0, 10, 5, '5px 5px');
 });
-
-function cssProperty(from: string, to: string, fromRate: number, toRate: number, rate: number, value: string) {
-    expect(emphasizeStyleProperty(from, to, fromRate, toRate, rate)).toEqual(value);
-}
 
 it('styleProperty: dimention - px', () => {
     expect(emphasizeStyleProperty('8px', '12px', 0.5)).toEqual('10px');
@@ -44,3 +44,6 @@ it('styleProperty: color - rgb', () => {
     expect(emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5)).toEqual('#323232');
 });
 
+it('styleProperty: border', () => {
+    expect(emphasizeStyleProperty('0px solid #000000', '10px solid #888888', 0.5)).toEqual('5px solid #444444');
+});

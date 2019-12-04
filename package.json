@@ -1,6 +1,6 @@
 {
     "name": "emphasizer",
-    "version": "1.1.7",
+    "version": "1.1.8",
     "description": "React style emphasizer",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -38,7 +38,7 @@
         "start-example": "cd example && npm start",
         "deploy-example": "cd example && npm run deploy",
         "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
-        "test": "jest",
+        "test": "jest --config jest.config.js",
         "prepublishOnly": "npm run test && npm run lint",
         "lint": "eslint ./src/**/*.ts",
         "lint:fix": "npm run lint -- --fix"
@@ -68,6 +68,6 @@
         "dist"
     ],
     "dependencies": {
-        "jolor": "^1.1.7"
+        "jolor": "^1.1.8"
     }
 }

@@ -19,14 +19,7 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 0,
         'react/prop-types': 0,
         '@typescript-eslint/no-use-before-define': 0,
-        'no-console': ['error', { allow: ['warn', 'error'] }],
-        '@typescript-eslint/member-ordering': [
-            'error',
-            {
-                default: ['public-static-field', 'static-field', 'instance-field'],
-                classExpressions: ['public-instance-method', 'public-static-field'],
-            },
-        ],
+        'no-console': ['error', { allow: ['warn', 'error'] }]
     },
     settings: {
         react: {

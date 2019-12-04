@@ -67,11 +67,13 @@ expect(
             width: '8px',
             margin: '2px 2px',
             color: '#222222',
+            border: '0px solid #000000',
         },
         {
             width: '12px',
             margin: '6px 6px',
             color: '#888888',
+            border: '10px solid #888888',
         },
         0.5,
     ),
@@ -79,6 +81,7 @@ expect(
     width: '10px',
     margin: '4px 4px',
     color: '#555555',
+    border: '5px solid #444444',
 });
 ```
 
@@ -134,6 +137,9 @@ emphasizeStyleProperty('8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '1
 emphasizeStyleProperty('#222222', '#444444', 0.5); // => '#333333'
 emphasizeStyleProperty('green', 'blue', 0.5); // => '#004080'
 emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#323232'
+
+// border
+emphasizeStyleProperty('0px solid #000000', '10px solid #888888', 0.5); // => '5px solid #444444'
 ```
 
 ### emphasizeNumber(...)
