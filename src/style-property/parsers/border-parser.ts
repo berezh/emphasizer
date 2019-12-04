@@ -1,15 +1,8 @@
 import { StylePropertyPatterns } from './style-property-patterns';
 import { BaseParser, StylePropertyType } from './base-parser';
-import { Dimention1Parser } from './dimention1-parser';
 import { emphasizeNumber } from '../../number';
 import { emphasizeColor } from '../../color';
-
-export interface BorderOption {
-    value: number;
-    dimension?: string;
-    type: string;
-    color: string;
-}
+import { BorderOption } from '../interfaces';
 
 export class BorderParser extends BaseParser {
     key = (): string => {
@@ -24,7 +17,7 @@ export class BorderParser extends BaseParser {
         const raw = this.toString(text);
         let value = 0;
         let dimension: string | undefined;
-        let type: string = '';
+        let type = '';
         let restRaw = raw;
 
         const dimentionMatches = raw.match(StylePropertyPatterns.startDimention);
@@ -51,7 +44,13 @@ export class BorderParser extends BaseParser {
         };
     };
 
-    emphasize = (fromValue: StylePropertyType, toValue: StylePropertyType, fromRate: number, toRate: number, rate: number): string => {
+    emphasize = (
+        fromValue: StylePropertyType,
+        toValue: StylePropertyType,
+        fromRate: number,
+        toRate: number,
+        rate: number,
+    ): string => {
         const from = this.parse(fromValue);
         const to = this.parse(toValue);
         const { dimension, type } = from;

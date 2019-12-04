@@ -1,4 +1,5 @@
-import { Dimention2Parser, DimentionOption } from '../../../src/style-property/parsers';
+import { Dimention2Parser } from '../../../src/style-property/parsers';
+import { DimentionOption } from '../../../src/style-property/interfaces';
 
 it('Dimention1Parser: isMatch', () => {
     expect(new Dimention2Parser().isMatch('1px 2px')).toBeTruthy();
@@ -20,8 +21,5 @@ it('Dimention1Parser: parse', () => {
         value: 2,
         dimension: 'px',
     };
-    expect(new Dimention2Parser().parse('1px 2px')).toMatchObject<DimentionOption[]>([
-        dimention1,
-        dimention2,
-    ]);
+    expect(new Dimention2Parser().parse('1px 2px')).toMatchObject<DimentionOption[]>([dimention1, dimention2]);
 });

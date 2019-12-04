@@ -1,6 +1,6 @@
 import { StylePropertyPatterns } from './style-property-patterns';
 import { BaseParser, StylePropertyType } from './base-parser';
-import { DimentionOption } from './dimention1-parser';
+import { DimentionOption } from '../interfaces';
 
 export class Dimention3Parser extends BaseParser {
     key = (): string => {
@@ -16,7 +16,13 @@ export class Dimention3Parser extends BaseParser {
         return [options[0], options[1], options[2]];
     };
 
-    emphasize = (fromValue: StylePropertyType, toValue: StylePropertyType, fromRate: number, toRate: number, rate: number): string => {
+    emphasize = (
+        fromValue: StylePropertyType,
+        toValue: StylePropertyType,
+        fromRate: number,
+        toRate: number,
+        rate: number,
+    ): string => {
         const from = this.parse(fromValue);
         const to = this.parse(toValue);
         return this.emphasizeDimentionSet(from, to, fromRate, toRate, rate);

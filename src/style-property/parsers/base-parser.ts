@@ -1,6 +1,6 @@
 import { StylePropertyPatterns } from './style-property-patterns';
-import { DimentionOption } from './dimention1-parser';
-import { emphasizeNumber } from '../..';
+import { emphasizeNumber } from '../../number';
+import { DimentionOption } from '../interfaces';
 
 export type StylePropertyType = string | number | undefined;
 
@@ -83,10 +83,12 @@ export abstract class BaseParser {
         const fromOptions = this.fixedOptions(from, max);
         const toOptions = this.fixedOptions(to, max);
 
+        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
+
         for (let i = 0; i < fromOptions.length; i++) {
             options.push({
                 value: emphasizeNumber(fromOptions[i].value, toOptions[i].value, fromRate, toRate, rate),
-                dimension: fromOptions[i].dimension,
+                dimension,
             });
         }
 

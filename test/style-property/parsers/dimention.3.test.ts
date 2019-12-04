@@ -1,4 +1,5 @@
-import { Dimention3Parser, DimentionOption } from '../../../src/style-property/parsers';
+import { Dimention3Parser } from '../../../src/style-property/parsers';
+import { DimentionOption } from '../../../src/style-property/interfaces';
 
 it('Dimention1Parser: isMatch', () => {
     expect(new Dimention3Parser().isMatch('1px 2px 3px')).toBeTruthy();

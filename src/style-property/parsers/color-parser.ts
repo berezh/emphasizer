@@ -11,7 +11,13 @@ export class ColorParser extends BaseParser {
         return Color.isColor(this.toString(raw));
     };
 
-    emphasize = (from: StylePropertyType, to: StylePropertyType, fromRate: number, toRate: number, rate: number): string => {
+    emphasize = (
+        from: StylePropertyType,
+        to: StylePropertyType,
+        fromRate: number,
+        toRate: number,
+        rate: number,
+    ): string => {
         return emphasizeColor(this.toString(from), this.toString(to), fromRate, toRate, rate);
     };
 }

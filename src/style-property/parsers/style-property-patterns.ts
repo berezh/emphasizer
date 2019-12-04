@@ -42,7 +42,7 @@ function startDimention(): string {
     return `^${whiteSpace()}${dimentionValue()}${anyDimentionUnit()}`;
 }
 
-function completeDimention(count: number = 1): string {
+function completeDimention(count = 1): string {
     const set: string[] = [];
     for (let i = 0; i < count; i++) {
         set.push(dimention());
@@ -70,9 +70,9 @@ export class StylePropertyPatterns {
     public static completeDimention1 = new RegExp(completeDimention(1), 'gi');
 
     public static completeDimention2 = new RegExp(completeDimention(2), 'gi');
-    
+
     public static completeDimention3 = new RegExp(completeDimention(3), 'gi');
-    
+
     public static completeDimention4 = new RegExp(completeDimention(4), 'gi');
 
     public static dimention = new RegExp(dimention(), 'gi');

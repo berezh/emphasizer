@@ -1,4 +1,5 @@
-import { BorderParser, BorderOption } from '../../../src/style-property/parsers';
+import { BorderParser } from '../../../src/style-property/parsers/border-parser';
+import { BorderOption } from '../../../src/style-property/interfaces';
 
 it('BorderParser: isMatch', () => {
     expect(new BorderParser().isMatch('1px solid red')).toBeTruthy();
