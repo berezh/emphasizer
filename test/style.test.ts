@@ -21,3 +21,19 @@ it('style: simple', () => {
         color: '#555555',
     });
 });
+
+it('style: number', () => {
+    expect(
+        emphasizeStyle(
+            {
+                fontSize: 8,
+            },
+            {
+                fontSize: 12,
+            },
+            0.5,
+        ),
+    ).toMatchObject({
+        fontSize: 10,
+    });
+});
