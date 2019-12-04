@@ -7,6 +7,7 @@ import {
     BorderParser,
     BaseParser,
 } from './parsers';
+import { emphasizeNumber } from '../number';
 
 function initParsers(): BaseParser[] {
     return [
@@ -28,34 +29,38 @@ function emphasizeStylePropertyBase(
     toRate: number,
     rate: number,
 ): string | number | undefined {
-    let fromParser: BaseParser | undefined = undefined;
-    let toParser: BaseParser | undefined = undefined;
+    if (typeof fromValue === 'number' && typeof toValue === 'number') {
+        return emphasizeNumber(fromValue, toValue, fromRate, toRate, rate);
+    } else {
+        let fromParser: BaseParser | undefined = undefined;
+        let toParser: BaseParser | undefined = undefined;
 
-    for (let i = 0; i < parsers.length; i++) {
-        const parser = parsers[i];
-        if (!fromParser) {
-            if (parser.isMatch(fromValue)) {
-                fromParser = parser;
+        for (let i = 0; i < parsers.length; i++) {
+            const parser = parsers[i];
+            if (!fromParser) {
+                if (parser.isMatch(fromValue)) {
+                    fromParser = parser;
+                }
+            }
+            if (!toParser) {
+                if (parser.isMatch(toValue)) {
+                    toParser = parser;
+                }
+            }
+            if (fromParser && toParser) {
+                break;
             }
         }
-        if (!toParser) {
-            if (parser.isMatch(toValue)) {
-                toParser = parser;
-            }
-        }
+
         if (fromParser && toParser) {
-            break;
+            if (fromParser.key() === toParser.key()) {
+                return fromParser.emphasize(fromValue, toValue, fromRate, toRate, rate);
+            }
+        } else if (fromParser) {
+            return fromValue;
+        } else if (toParser) {
+            return toValue;
         }
-    }
-
-    if (fromParser && toParser) {
-        if (fromParser.key() === toParser.key()) {
-            return fromParser.emphasize(fromValue, toValue, fromRate, toRate, rate);
-        }
-    } else if (fromParser) {
-        return fromValue;
-    } else if (toParser) {
-        return toValue;
     }
 
     return undefined;
