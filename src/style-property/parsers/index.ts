@@ -5,3 +5,6 @@ export * from './dimention3-parser';
 export * from './dimention4-parser';
 export * from './color-parser';
 export * from './base-parser';
+export * from './box-shadow2-parser';
+export * from './box-shadow3-parser';
+export * from './box-shadow4-parser';

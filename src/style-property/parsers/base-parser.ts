@@ -1,22 +1,23 @@
 import { StylePropertyPatterns } from './style-property-patterns';
 import { emphasizeNumber } from '../../number';
-import { DimentionOption } from '../interfaces';
+import { DimentionOption, BoxShadowOption } from '../interfaces';
 import { ColorRegexPattern } from 'jolor/lib/units';
+import { emphasizeColor } from '../../color';
 
 export type StylePropertyType = string | number | undefined;
 
 export abstract class BaseParser {
     protected parserColor = new ColorRegexPattern();
 
-    public abstract key: () => string;
-    public abstract isMatch: (raw: StylePropertyType) => boolean;
-    public abstract emphasize: (
+    public abstract get key(): string;
+    public abstract isMatch(raw: StylePropertyType): boolean;
+    public abstract emphasize(
         fromValue: StylePropertyType,
         toValue: StylePropertyType,
         fromRate: number,
         toRate: number,
         rate: number,
-    ) => string;
+    ): string;
 
     protected firstMatch(pattern: RegExp | string, raw: string): string | undefined {
         let result;
@@ -28,8 +29,9 @@ export abstract class BaseParser {
         return result;
     }
 
-    protected isInnerMatch(raw: StylePropertyType, pattern: RegExp): boolean {
-        return this.toString(raw).match(pattern) !== null;
+    protected match(raw: StylePropertyType, regexp: RegExp): boolean {
+        regexp.lastIndex = 0;
+        return regexp.test(this.toString(raw));
     }
 
     protected toString(raw: StylePropertyType): string {

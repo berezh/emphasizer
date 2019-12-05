@@ -6,17 +6,23 @@ import {
     Dimention4Parser,
     BorderParser,
     BaseParser,
+    BoxShadow2Parser,
+    BoxShadow3Parser,
+    BoxShadow4Parser,
 } from './parsers';
 import { emphasizeNumber } from '../number';
 
 function initParsers(): BaseParser[] {
     return [
-        new ColorParser(),
         new Dimention1Parser(),
         new Dimention2Parser(),
         new Dimention3Parser(),
         new Dimention4Parser(),
+        new ColorParser(),
         new BorderParser(),
+        new BoxShadow2Parser(),
+        new BoxShadow3Parser(),
+        new BoxShadow4Parser(),
     ];
 }
 
@@ -53,7 +59,7 @@ function emphasizeStylePropertyBase(
         }
 
         if (fromParser && toParser) {
-            if (fromParser.key() === toParser.key()) {
+            if (fromParser.key === toParser.key) {
                 return fromParser.emphasize(fromValue, toValue, fromRate, toRate, rate);
             }
         } else if (fromParser) {

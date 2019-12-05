@@ -1,22 +1,25 @@
 import { BaseParser, StylePropertyType } from './base-parser';
 import { emphasizeColor } from '../../color';
+import { ColorRegexPattern } from 'jolor/lib/units';
 
 export class ColorParser extends BaseParser {
-    key = (): string => {
+    private colorParser = new ColorRegexPattern();
+
+    public get key(): string {
         return 'ColorParser';
-    };
+    }
 
-    isMatch = (raw: StylePropertyType): boolean => {
-        return this.parserColor.isColor(this.toString(raw));
-    };
+    public isMatch(raw: StylePropertyType): boolean {
+        return this.colorParser.isColor(this.toString(raw));
+    }
 
-    emphasize = (
+    public emphasize(
         from: StylePropertyType,
         to: StylePropertyType,
         fromRate: number,
         toRate: number,
         rate: number,
-    ): string => {
+    ): string {
         return emphasizeColor(this.toString(from), this.toString(to), fromRate, toRate, rate);
-    };
+    }
 }
