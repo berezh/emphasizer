@@ -26,17 +26,7 @@ const d1to4 = [dimention1, dimention2, dimention3, dimention4];
 const c1 = [color];
 const b1 = [border];
 
-const s: React.CSSProperties = {};
-
-// s.borderRadius;
-// s.borderBottomLeftRadius;
-// s.borderBottomRightRadius;
-// s.borderTopLeftRadius;
-// s.borderTopRightRadius;
-// s.borderColor;
-// s.caretColor;
-// s.outlineColor;
-// s.textDecorationColor;
+// const s: React.CSSProperties = {};
 
 export const ParserManager: {
     [key: string]: BaseParser[];
