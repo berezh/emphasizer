@@ -9,14 +9,8 @@ export class BoxShadow2Parser extends BoxShadowBaseParser {
     }
 
     public parse(text: StylePropertyType): BoxShadowOption {
-        let raw = this.toString(text);
-        const inset = /\s*inset\s*/gi.test(raw);
-        if (inset) {
-            raw = raw.replace(/inset/gi, '');
-        }
-
-        // .replace('inset', '');
-        const splits = this.split(this.trimColor(raw));
+        const { inset, restText } = this.parseInset(text);
+        const splits = this.split(this.trimColor(restText));
         const dimension1 = this.parseDimention(splits[0]);
         const dimension2 = this.parseDimention(splits[1]);
         return {

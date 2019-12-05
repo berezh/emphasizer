@@ -14,6 +14,23 @@ export abstract class BoxShadowBaseParser extends BaseParser {
         return this.matchBoxShadow(text);
     }
 
+    protected parseInset(
+        text: StylePropertyType,
+    ): {
+        inset: boolean;
+        restText: string;
+    } {
+        let restText = this.toString(text);
+        const inset = /\s*inset\s*/gi.test(restText);
+        if (inset) {
+            restText = restText.replace(/inset/gi, '');
+        }
+        return {
+            inset,
+            restText,
+        };
+    }
+
     public emphasize(
         fromValue: StylePropertyType,
         toValue: StylePropertyType,
