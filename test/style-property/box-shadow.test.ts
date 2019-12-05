@@ -6,7 +6,3 @@ it('style: box-shadow: 2', () => {
         'inset 2px 2px #444444',
     );
 });
-
-// it('styleProperty: border: color name', () => {
-//     expect(emphasizeStyleProperty('1px solid LightSkyBlue', '3px solid DarkBlue', 0.5)).toEqual('2px solid #4467c3');
-// });
