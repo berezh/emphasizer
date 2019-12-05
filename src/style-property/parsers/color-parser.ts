@@ -22,4 +22,8 @@ export class ColorParser extends BaseParser {
     ): string {
         return emphasizeColor(this.toString(from), this.toString(to), fromRate, toRate, rate);
     }
+
+    public get propertyNames(): string[] {
+        return ['color'];
+    }
 }

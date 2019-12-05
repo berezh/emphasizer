@@ -3,14 +3,9 @@ import { DimentionOption } from '../interfaces';
 
 export abstract class DimentionBaseParser extends BaseParser {
     public abstract parse(text: StylePropertyType): DimentionOption[];
-    public abstract matchDimention(text: StylePropertyType): boolean;
 
     public get key(): string {
         return 'DimentionParser';
-    }
-
-    public isMatch(raw: StylePropertyType): boolean {
-        return this.matchDimention(raw);
     }
 
     public emphasize(

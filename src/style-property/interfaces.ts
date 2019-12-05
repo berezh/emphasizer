@@ -1,3 +1,5 @@
+import { BoxShadow2Parser } from './parsers';
+
 export interface BorderOption {
     value: number;
     dimension?: string;
@@ -15,3 +17,14 @@ export interface DimentionOption {
     value: number;
     dimension?: string;
 }
+
+export type SupportedStyleName =
+    | 'width'
+    | 'borderRadius'
+    | 'fontSize'
+    | 'margin'
+    | 'padding'
+    | 'color'
+    | 'backgroundColor'
+    | 'border'
+    | 'boxShadow';

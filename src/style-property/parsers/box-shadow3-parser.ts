@@ -4,7 +4,7 @@ import { BoxShadowOption } from '../interfaces';
 import { BoxShadowBaseParser } from './box-shadow-base-parser';
 
 export class BoxShadow3Parser extends BoxShadowBaseParser {
-    public matchBoxShadow(raw: StylePropertyType): boolean {
+    public isMatch(raw: StylePropertyType): boolean {
         return this.match(raw, StylePropertyPatterns.completeBoxShadow3);
     }
 

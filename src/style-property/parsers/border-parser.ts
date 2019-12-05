@@ -38,4 +38,8 @@ export class BorderParser extends BaseParser {
         const color = emphasizeColor(from.color, to.color, fromRate, toRate, rate);
         return `${value}${dimension || ''} ${type} ${color}`;
     }
+
+    public get propertyNames(): string[] {
+        return ['border'];
+    }
 }

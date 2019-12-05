@@ -1,8 +1,7 @@
 import { StylePropertyPatterns } from './style-property-patterns';
-import { emphasizeNumber } from '../../number';
-import { DimentionOption, BoxShadowOption } from '../interfaces';
+import { DimentionOption } from '../interfaces';
 import { ColorRegexPattern } from 'jolor/lib/units';
-import { emphasizeColor } from '../../color';
+import { emphasizeNumber } from '../../number';
 
 export type StylePropertyType = string | number | undefined;
 
@@ -10,6 +9,7 @@ export abstract class BaseParser {
     protected parserColor = new ColorRegexPattern();
 
     public abstract get key(): string;
+    public abstract get propertyNames(): string[];
     public abstract isMatch(raw: StylePropertyType): boolean;
     public abstract emphasize(
         fromValue: StylePropertyType,
@@ -75,31 +75,6 @@ export abstract class BaseParser {
         return result;
     }
 
-    protected emphasizeDimentionSet(
-        from: DimentionOption[],
-        to: DimentionOption[],
-        fromRate: number,
-        toRate: number,
-        rate: number,
-    ): string {
-        const options: DimentionOption[] = [];
-        const max = Math.max(from.length, to.length);
-
-        const fromOptions = this.fixedOptions(from, max);
-        const toOptions = this.fixedOptions(to, max);
-
-        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
-
-        for (let i = 0; i < fromOptions.length; i++) {
-            options.push({
-                value: emphasizeNumber(fromOptions[i].value, toOptions[i].value, fromRate, toRate, rate),
-                dimension,
-            });
-        }
-
-        return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
-    }
-
     // clean white-space inside colors
     protected trimColor(text: StylePropertyType): string {
         return this.parserColor.foreachColors(this.toString(text), x => x.replace(/\s+/gi, ''));
@@ -109,7 +84,7 @@ export abstract class BaseParser {
         return this.trim(this.toString(text)).split(/\s+/gi);
     }
 
-    private fixedOptions(options: DimentionOption[], fixed: number): DimentionOption[] {
+    protected fixedOptions(options: DimentionOption[], fixed: number): DimentionOption[] {
         const curent = options.length;
         const delta = fixed - curent;
         if (delta) {
@@ -135,5 +110,30 @@ export abstract class BaseParser {
         }
 
         return options;
+    }
+
+    protected emphasizeDimentionSet(
+        from: DimentionOption[],
+        to: DimentionOption[],
+        fromRate: number,
+        toRate: number,
+        rate: number,
+    ): string {
+        const options: DimentionOption[] = [];
+        const max = Math.max(from.length, to.length);
+
+        const fromOptions = this.fixedOptions(from, max);
+        const toOptions = this.fixedOptions(to, max);
+
+        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
+
+        for (let i = 0; i < fromOptions.length; i++) {
+            options.push({
+                value: emphasizeNumber(fromOptions[i].value, toOptions[i].value, fromRate, toRate, rate),
+                dimension,
+            });
+        }
+
+        return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
     }
 }

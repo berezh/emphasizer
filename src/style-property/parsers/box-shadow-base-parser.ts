@@ -4,14 +4,9 @@ import { emphasizeColor } from '../../color';
 
 export abstract class BoxShadowBaseParser extends BaseParser {
     public abstract parse(text: StylePropertyType): BoxShadowOption;
-    public abstract matchBoxShadow(text: StylePropertyType): boolean;
 
     public get key(): string {
         return 'BoxShadowParser';
-    }
-
-    public isMatch(text: StylePropertyType): boolean {
-        return this.matchBoxShadow(text);
     }
 
     protected parseInset(
@@ -43,5 +38,9 @@ export abstract class BoxShadowBaseParser extends BaseParser {
         const dimentionString = this.emphasizeDimentionSet(from.dimentions, to.dimentions, fromRate, toRate, rate);
         const color = emphasizeColor(from.color, to.color, fromRate, toRate, rate);
         return `${from.inset && to.inset ? `inset ` : ''}${dimentionString} ${color}`;
+    }
+
+    public get propertyNames(): string[] {
+        return ['boxShadow'];
     }
 }
