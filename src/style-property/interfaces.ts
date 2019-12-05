@@ -15,14 +15,3 @@ export interface DimentionOption {
     value: number;
     dimension?: string;
 }
-
-export type SupportedStyleName =
-    | 'width'
-    | 'borderRadius'
-    | 'fontSize'
-    | 'margin'
-    | 'padding'
-    | 'color'
-    | 'backgroundColor'
-    | 'border'
-    | 'boxShadow';

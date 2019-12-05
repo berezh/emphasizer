@@ -1,10 +1,9 @@
 import { BaseParser } from './parsers';
 import { emphasizeNumber } from '../number';
 import { ParserManager } from './parser-manager';
-import { SupportedStyleName } from './interfaces';
 
 function emphasizeStylePropertyBase(
-    name: SupportedStyleName | string,
+    name: string,
     fromValue: string | number | undefined,
     toValue: string | number | undefined,
     fromRate: number,
@@ -52,13 +51,13 @@ function emphasizeStylePropertyBase(
 }
 
 function emphasizeStyleProperty(
-    name: SupportedStyleName | string,
+    name: string,
     fromValue: string | number | undefined,
     toValue: string | number | undefined,
     rate: number,
 ): string | number | undefined;
 function emphasizeStyleProperty(
-    name: SupportedStyleName | string,
+    name: string,
     fromValue: string | number | undefined,
     toValue: string | number | undefined,
     fromRate: number,

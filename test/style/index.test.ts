@@ -1,4 +1,4 @@
-import { emphasizeStyle } from '../src';
+import { emphasizeStyle } from '../../src';
 
 it('style: simple', () => {
     expect(
