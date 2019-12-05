@@ -14,34 +14,43 @@ export class BorderParser extends BaseParser {
     };
 
     parse = (text: StylePropertyType): BorderOption => {
-        const raw = this.toString(text);
-        let value = 0;
-        let dimension: string | undefined;
-        let type = '';
-        let restRaw = raw;
-
-        const dimentionMatches = raw.match(StylePropertyPatterns.startDimention);
-        if (dimentionMatches) {
-            const dimensionOption = this.parseDimention(dimentionMatches[0]);
-            if (dimensionOption) {
-                value = dimensionOption.value;
-                dimension = dimensionOption.dimension;
-            }
-            restRaw = this.trim(raw.replace(dimentionMatches[0], ''));
-        }
-
-        const typeMatches = restRaw.match(/^\s*[a-z]+/gi);
-        if (typeMatches) {
-            type = this.firstMatch(/[a-z]+/gi, typeMatches[0]) || '';
-            restRaw = this.trim(restRaw.replace(typeMatches[0], ''));
-        }
-
+        const splits = this.split(this.trimColor(text));
+        const { value, dimension } = this.parseDimention(splits[0]);
         return {
             value,
             dimension,
-            type,
-            color: restRaw,
+            type: splits[1],
+            color: splits[2],
         };
+
+        // const raw = this.toString(text);
+        // let value = 0;
+        // let dimension: string | undefined;
+        // let type = '';
+        // let restRaw = raw;
+
+        // const dimentionMatches = raw.match(StylePropertyPatterns.startDimention);
+        // if (dimentionMatches) {
+        //     const dimensionOption = this.parseDimention(dimentionMatches[0]);
+        //     if (dimensionOption) {
+        //         value = dimensionOption.value;
+        //         dimension = dimensionOption.dimension;
+        //     }
+        //     restRaw = this.trim(raw.replace(dimentionMatches[0], ''));
+        // }
+
+        // const typeMatches = restRaw.match(/^\s*[a-z]+/gi);
+        // if (typeMatches) {
+        //     type = this.firstMatch(/[a-z]+/gi, typeMatches[0]) || '';
+        //     restRaw = this.trim(restRaw.replace(typeMatches[0], ''));
+        // }
+
+        // return {
+        //     value,
+        //     dimension,
+        //     type,
+        //     color: restRaw,
+        // };
     };
 
     emphasize = (

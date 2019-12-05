@@ -24,6 +24,6 @@ it('BorderParser: parse', () => {
         value: 0,
         dimension: '%',
         type: 'dots',
-        color: 'rgba(255, 255, 255, 0.7)',
+        color: 'rgba(255,255,255,0.7)',
     });
 });

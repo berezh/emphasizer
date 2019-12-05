@@ -2265,9 +2265,9 @@ jest@^24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
-jolor@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/jolor/-/jolor-1.1.7.tgz#a4b072ef1e66ee17939dd20abf37d9f478884ac6"
+jolor@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/jolor/-/jolor-1.2.3.tgz#fd46cae60c3ef49670b23fe598c33b8a2fe67ef1"
 
 js-base64@^2.1.8:
   version "2.5.1"

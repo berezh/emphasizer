@@ -1,10 +1,13 @@
 import { StylePropertyPatterns } from './style-property-patterns';
 import { emphasizeNumber } from '../../number';
 import { DimentionOption } from '../interfaces';
+import { ColorRegexPattern } from 'jolor/lib/units';
 
 export type StylePropertyType = string | number | undefined;
 
 export abstract class BaseParser {
+    protected parserColor = new ColorRegexPattern();
+
     public abstract key: () => string;
     public abstract isMatch: (raw: StylePropertyType) => boolean;
     public abstract emphasize: (
@@ -93,6 +96,15 @@ export abstract class BaseParser {
         }
 
         return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
+    }
+
+    // clean white-space inside colors
+    protected trimColor(text: StylePropertyType): string {
+        return this.parserColor.foreachColors(this.toString(text), x => x.replace(/\s+/gi, ''));
+    }
+
+    protected split(text: StylePropertyType): string[] {
+        return this.trim(this.toString(text)).split(/\s+/gi);
     }
 
     private fixedOptions(options: DimentionOption[], fixed: number): DimentionOption[] {

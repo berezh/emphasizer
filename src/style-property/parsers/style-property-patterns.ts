@@ -1,11 +1,3 @@
-// length: /\d+[a-z%]*/gi,
-// number: /\d+/gi,
-// dimension: /[a-z%]+/gi,
-// lenght1: /^\s*(\s*\d+[a-z%]*\s*){1}\s*(;)?\s*$/gi,
-// lenght2: /^\s*(\s*\d+[a-z%]*\s*){2}\s*(;)?\s*$/gi,
-// lenght3: /^\s*(\s*\d+[a-z%]*\s*){3}\s*(;)?\s*$/gi,
-// lenght4: /^\s*(\s*\d+[a-z%]*\s*){4}\s*(;)?\s*$/gi,
-
 function dimentionValue(): string {
     return '\\d\+';
 }

@@ -55,10 +55,3 @@ it('styleProperty: color - rgb', () => {
     expect(emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5)).toEqual('#323232');
 });
 
-it('styleProperty: border', () => {
-    expect(emphasizeStyleProperty('0px solid #000000', '10px solid #888888', 0.5)).toEqual('5px solid #444444');
-});
-
-it('styleProperty: border: color name', () => {
-    expect(emphasizeStyleProperty('1px solid LightSkyBlue', '3px solid DarkBlue', 0.5)).toEqual('2px solid #4467c3');
-});
