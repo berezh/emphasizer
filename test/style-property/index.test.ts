@@ -1,8 +1,7 @@
 import { emphasizeStyleProperty } from '../../src';
-import { SupportedStyleName } from '../../src/style-property/interfaces';
 
 function cssProperty(
-    name: SupportedStyleName,
+    name: string,
     from: string | number,
     to: string | number,
     fromRate: number,
@@ -42,7 +41,9 @@ it('styleProperty: dimention - px px', () => {
 });
 
 it('styleProperty: dimention - px px px px', () => {
-    expect(emphasizeStyleProperty('margin', '8px 8px 8px 8px', '12px 12px 12px 12px', 0.5)).toEqual('10px 10px 10px 10px');
+    expect(emphasizeStyleProperty('margin', '8px 8px 8px 8px', '12px 12px 12px 12px', 0.5)).toEqual(
+        '10px 10px 10px 10px',
+    );
 });
 
 it('styleProperty: color - hex', () => {
