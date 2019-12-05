@@ -1,7 +1,5 @@
 import { BaseParser, StylePropertyType } from './base-parser';
 import { emphasizeColor } from '../../color';
-import { Color } from 'jolor';
-import { ColorRegexPattern } from 'jolor/lib/units';
 
 export class ColorParser extends BaseParser {
     key = (): string => {
