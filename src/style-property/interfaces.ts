@@ -1,5 +1,3 @@
-import { BoxShadow2Parser } from './parsers';
-
 export interface BorderOption {
     value: number;
     dimension?: string;

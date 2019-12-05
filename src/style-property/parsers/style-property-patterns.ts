@@ -47,10 +47,6 @@ function completeDimention(count = 1): string {
     return wrapStartEnd(`${set.join(whiteSpace())}${whiteSpace()}${wrapOptional(semicolon())}`);
 }
 
-function color(): string {
-    return '[a-z0-9\,\(\)#\. ]+';
-}
-
 function type(): string {
     return '[a-z]+';
 }
@@ -58,10 +54,6 @@ function type(): string {
 function completeBorder(): string {
     // 1px solid gray|#111|rgb(10,10,10)
     return wrapStartEnd(join(dimention(), type(), colorPattern.colorPatternString, wrapOptional(semicolon())));
-}
-
-function optionalInset() {
-    return '(inset)?';
 }
 
 function join(...texts: string[]) {

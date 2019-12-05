@@ -1,6 +1,6 @@
 import { BaseParser } from './parsers';
 import { emphasizeNumber } from '../number';
-import { ParserManager, AllParsers } from './parser-manager';
+import { ParserManager } from './parser-manager';
 import { SupportedStyleName } from './interfaces';
 
 function emphasizeStylePropertyBase(

@@ -10,7 +10,6 @@ import {
     BoxShadow4Parser,
     BaseParser,
 } from './parsers';
-import { SupportedStyleName } from './interfaces';
 
 const dimention1 = new Dimention1Parser();
 const dimention2 = new Dimention2Parser();
