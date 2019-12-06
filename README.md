@@ -16,10 +16,11 @@ npm install emphasizer
 
 ## <a href="https://i2ui-examples.now.sh/emphasizer" target="_blank">LIVE DEMO</a>
 
-## Methods
+## Glossary
 
 -   [emphasizeStyle()](#emphasizestyle)
 -   [emphasizeStyleProperty()](#emphasizestyleproperty)
+-   [Suported styles](#suported-styles)
 -   [emphasizeNumber()](#emphasizenumber)
 
 <br/>
@@ -144,6 +145,17 @@ emphasizeStyleProperty('color', 'rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#
 
 // border
 emphasizeStyleProperty('border', '0px solid #000000', '10px solid #888888', 0.5); // => '5px solid #444444'
+```
+
+### Suported styles:
+
+```html
+width, minWidth, maxWidth, height, minHeight, maxHeight, border, borderColor, borderBottom, borderBottomColor,
+borderBottomWidth, borderLeft, borderLeftColor, borderLeftWidth, borderRight, borderRightColor, borderRightWidth,
+borderTop, borderTopColor, borderTopWidth, borderRadius, borderBottomLeftRadius, borderBottomRightRadius,
+borderTopLeftRadius, borderTopRightRadius, padding, paddingBottom, paddingLeft, paddingRight, paddingTop, margin,
+marginBottom, marginLeft, marginRight, marginTop, bottom, left, right, top, color, backgroundColor, caretColor,
+outlineColor, textDecorationColor, fontSize, boxShadow
 ```
 
 ### emphasizeNumber(...)
