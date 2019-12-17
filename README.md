@@ -14,7 +14,7 @@ React style emphasizer
 npm install emphasizer
 ```
 
-## <a href="https://i2ui-examples.now.sh/emphasizer" target="_blank">LIVE DEMO</a>
+## <a href="http://i2ui.com/#emphasizer" target="_blank">LIVE DEMO</a>
 
 ## Glossary
 
