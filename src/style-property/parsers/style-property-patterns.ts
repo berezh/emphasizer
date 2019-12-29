@@ -1,13 +1,9 @@
-// length: /\d+[a-z%]*/gi,
-// number: /\d+/gi,
-// dimension: /[a-z%]+/gi,
-// lenght1: /^\s*(\s*\d+[a-z%]*\s*){1}\s*(;)?\s*$/gi,
-// lenght2: /^\s*(\s*\d+[a-z%]*\s*){2}\s*(;)?\s*$/gi,
-// lenght3: /^\s*(\s*\d+[a-z%]*\s*){3}\s*(;)?\s*$/gi,
-// lenght4: /^\s*(\s*\d+[a-z%]*\s*){4}\s*(;)?\s*$/gi,
+import { ColorRegexPattern } from 'jolor/lib/units';
+
+const colorPattern = new ColorRegexPattern();
 
 function dimentionValue(): string {
-    return '\\d\+';
+    return '\(-\)\?\\d\+';
 }
 
 function hasDimentionUnit(): string {
@@ -51,18 +47,63 @@ function completeDimention(count = 1): string {
     return wrapStartEnd(`${set.join(whiteSpace())}${whiteSpace()}${wrapOptional(semicolon())}`);
 }
 
-function color(): string {
-    return '[a-z0-9\,\(\)#\. ]+';
-}
-
 function type(): string {
     return '[a-z]+';
 }
 
 function completeBorder(): string {
     // 1px solid gray|#111|rgb(10,10,10)
+    return wrapStartEnd(join(dimention(), type(), colorPattern.colorPatternString, wrapOptional(semicolon())));
+}
+
+function join(...texts: string[]) {
+    return texts.join(whiteSpace());
+}
+
+const boxShadowInset = '(inset)?';
+
+function completeBoxShadow2(): string {
+    // 1px 1px black
     return wrapStartEnd(
-        `${dimention()}${whiteSpace()}${type()}${whiteSpace()}${color()}${whiteSpace()}${wrapOptional(semicolon())}`,
+        join(
+            boxShadowInset,
+            dimention(),
+            dimention(),
+            colorPattern.colorPatternString,
+            boxShadowInset,
+            wrapOptional(semicolon()),
+        ),
+    );
+}
+
+function completeBoxShadow3(): string {
+    // 1px 1px 1px black
+    return wrapStartEnd(
+        join(
+            boxShadowInset,
+            dimention(),
+            dimention(),
+            dimention(),
+            colorPattern.colorPatternString,
+            boxShadowInset,
+            wrapOptional(semicolon()),
+        ),
+    );
+}
+
+function completeBoxShadow4(): string {
+    // 1px 1px 1px 1px black
+    return wrapStartEnd(
+        join(
+            boxShadowInset,
+            dimention(),
+            dimention(),
+            dimention(),
+            dimention(),
+            colorPattern.colorPatternString,
+            boxShadowInset,
+            wrapOptional(semicolon()),
+        ),
     );
 }
 
@@ -84,4 +125,10 @@ export class StylePropertyPatterns {
     public static hasDimentionUnit = new RegExp(hasDimentionUnit(), 'gi');
 
     public static completeBorder = new RegExp(completeBorder(), 'gi');
+
+    public static completeBoxShadow2 = new RegExp(completeBoxShadow2(), 'gi');
+
+    public static completeBoxShadow3 = new RegExp(completeBoxShadow3(), 'gi');
+
+    public static completeBoxShadow4 = new RegExp(completeBoxShadow4(), 'gi');
 }

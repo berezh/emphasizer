@@ -14,12 +14,13 @@ React style emphasizer
 npm install emphasizer
 ```
 
-## <a href="https://i2ui-examples.now.sh/emphasizer" target="_blank">LIVE DEMO</a>
+## <a href="http://i2ui.com/#emphasizer" target="_blank">LIVE DEMO</a>
 
-## Methods
+## Glossary
 
 -   [emphasizeStyle()](#emphasizestyle)
 -   [emphasizeStyleProperty()](#emphasizestyleproperty)
+-   [Suported styles](#suported-styles)
 -   [emphasizeNumber()](#emphasizenumber)
 
 <br/>
@@ -89,6 +90,7 @@ expect(
 
 ```jsx
 function emphasizeStyleProperty(
+    name: string,
     fromValue: string | number,
     toValue: string | number,
     rate: number
@@ -97,6 +99,7 @@ function emphasizeStyleProperty(
 
 _Parameters:_
 
+-   `name`: style property name
 -   `fromValue`: style property value with lowest significance
 -   `toValue`: style property value with highest significance
 -   `rate`: rate of emphasized style property. Must be fraction from `0` to `1`
@@ -105,6 +108,7 @@ _Returns:_ emphasized style property value
 
 ```jsx
 function emphasizeStyleProperty(
+    name: string,
     fromValue: string | number,
     toValue: string | number,
     fromRate: number,
@@ -115,6 +119,7 @@ function emphasizeStyleProperty(
 
 _Parameters:_
 
+-   `name`: style property name
 -   `fromValue`: style property value with lowest significance
 -   `toValue`: style property value with highest significance
 -   `fromRate`: min rate value
@@ -126,20 +131,31 @@ _Returns:_ emphasized style property value
 _Example_
 
 ```js
-// dimention
-emphasizeStyleProperty('8px', '12px', 0.5); // => '10px'
-emphasizeStyleProperty('8px', '12px', 0, 2, 1); // => '10px'
+// width
+emphasizeStyleProperty('width', '8px', '12px', 0.5); // => '10px'
+emphasizeStyleProperty('width', '8px', '12px', 0, 2, 1); // => '10px'
 
-emphasizeStyleProperty('8px 8px', '12px 12px', 0.5); // => '10px 10px'
-emphasizeStyleProperty('8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '10px 10px 10px 10px'
+emphasizeStyleProperty('margin', '8px 8px', '12px 12px', 0.5); // => '10px 10px'
+emphasizeStyleProperty('margin', '8px 8px 8px 8px', '12px 12px 12px 12px', 0.5); // =>  '10px 10px 10px 10px'
 
 // color
-emphasizeStyleProperty('#222222', '#444444', 0.5); // => '#333333'
-emphasizeStyleProperty('green', 'blue', 0.5); // => '#004080'
-emphasizeStyleProperty('rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#323232'
+emphasizeStyleProperty('color', '#222222', '#444444', 0.5); // => '#333333'
+emphasizeStyleProperty('color', 'green', 'blue', 0.5); // => '#004080'
+emphasizeStyleProperty('color', 'rgb(0,0,0)', 'rgb(100,100,100)', 0.5); // => '#323232'
 
 // border
-emphasizeStyleProperty('0px solid #000000', '10px solid #888888', 0.5); // => '5px solid #444444'
+emphasizeStyleProperty('border', '0px solid #000000', '10px solid #888888', 0.5); // => '5px solid #444444'
+```
+
+### Suported styles:
+
+```html
+width, minWidth, maxWidth, height, minHeight, maxHeight, border, borderColor, borderBottom, borderBottomColor,
+borderBottomWidth, borderLeft, borderLeftColor, borderLeftWidth, borderRight, borderRightColor, borderRightWidth,
+borderTop, borderTopColor, borderTopWidth, borderRadius, borderBottomLeftRadius, borderBottomRightRadius,
+borderTopLeftRadius, borderTopRightRadius, padding, paddingBottom, paddingLeft, paddingRight, paddingTop, margin,
+marginBottom, marginLeft, marginRight, marginTop, bottom, left, right, top, color, backgroundColor, caretColor,
+outlineColor, textDecorationColor, fontSize, boxShadow
 ```
 
 ### emphasizeNumber(...)

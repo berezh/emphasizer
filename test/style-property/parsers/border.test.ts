@@ -5,6 +5,13 @@ it('BorderParser: isMatch', () => {
     expect(new BorderParser().isMatch('1px solid red')).toBeTruthy();
     expect(new BorderParser().isMatch('0 dots #888888')).toBeTruthy();
     expect(new BorderParser().isMatch('0 dots rgba(255, 255, 255, 0.7)')).toBeTruthy();
+    // false
+});
+
+it('BorderParser: isMatch - false', () => {
+    // false
+    expect(new BorderParser().isMatch('1px 1px #888888')).toBeFalsy();
+    expect(new BorderParser().isMatch('1px 1px 1px #888888')).toBeFalsy();
 });
 
 it('BorderParser: parse', () => {
@@ -24,6 +31,6 @@ it('BorderParser: parse', () => {
         value: 0,
         dimension: '%',
         type: 'dots',
-        color: 'rgba(255, 255, 255, 0.7)',
+        color: 'rgba(255,255,255,0.7)',
     });
 });

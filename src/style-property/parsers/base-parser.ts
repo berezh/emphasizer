@@ -1,19 +1,23 @@
 import { StylePropertyPatterns } from './style-property-patterns';
-import { emphasizeNumber } from '../../number';
 import { DimentionOption } from '../interfaces';
+import { ColorRegexPattern } from 'jolor/lib/units';
+import { emphasizeNumber } from '../../number';
 
 export type StylePropertyType = string | number | undefined;
 
 export abstract class BaseParser {
-    public abstract key: () => string;
-    public abstract isMatch: (raw: StylePropertyType) => boolean;
-    public abstract emphasize: (
+    protected parserColor = new ColorRegexPattern();
+
+    public abstract get key(): string;
+    public abstract get propertyNames(): string[];
+    public abstract isMatch(raw: StylePropertyType): boolean;
+    public abstract emphasize(
         fromValue: StylePropertyType,
         toValue: StylePropertyType,
         fromRate: number,
         toRate: number,
         rate: number,
-    ) => string;
+    ): string;
 
     protected firstMatch(pattern: RegExp | string, raw: string): string | undefined {
         let result;
@@ -25,8 +29,9 @@ export abstract class BaseParser {
         return result;
     }
 
-    protected isInnerMatch(raw: StylePropertyType, pattern: RegExp): boolean {
-        return this.toString(raw).match(pattern) !== null;
+    protected match(raw: StylePropertyType, regexp: RegExp): boolean {
+        regexp.lastIndex = 0;
+        return regexp.test(this.toString(raw));
     }
 
     protected toString(raw: StylePropertyType): string {
@@ -70,32 +75,16 @@ export abstract class BaseParser {
         return result;
     }
 
-    protected emphasizeDimentionSet(
-        from: DimentionOption[],
-        to: DimentionOption[],
-        fromRate: number,
-        toRate: number,
-        rate: number,
-    ): string {
-        const options: DimentionOption[] = [];
-        const max = Math.max(from.length, to.length);
-
-        const fromOptions = this.fixedOptions(from, max);
-        const toOptions = this.fixedOptions(to, max);
-
-        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
-
-        for (let i = 0; i < fromOptions.length; i++) {
-            options.push({
-                value: emphasizeNumber(fromOptions[i].value, toOptions[i].value, fromRate, toRate, rate),
-                dimension,
-            });
-        }
-
-        return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
+    // clean white-space inside colors
+    protected trimColor(text: StylePropertyType): string {
+        return this.parserColor.foreachColors(this.toString(text), x => x.replace(/\s+/gi, ''));
     }
 
-    private fixedOptions(options: DimentionOption[], fixed: number): DimentionOption[] {
+    protected split(text: StylePropertyType): string[] {
+        return this.trim(this.toString(text)).split(/\s+/gi);
+    }
+
+    protected fixedOptions(options: DimentionOption[], fixed: number): DimentionOption[] {
         const curent = options.length;
         const delta = fixed - curent;
         if (delta) {
@@ -121,5 +110,30 @@ export abstract class BaseParser {
         }
 
         return options;
+    }
+
+    protected emphasizeDimentionSet(
+        from: DimentionOption[],
+        to: DimentionOption[],
+        fromRate: number,
+        toRate: number,
+        rate: number,
+    ): string {
+        const options: DimentionOption[] = [];
+        const max = Math.max(from.length, to.length);
+
+        const fromOptions = this.fixedOptions(from, max);
+        const toOptions = this.fixedOptions(to, max);
+
+        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
+
+        for (let i = 0; i < fromOptions.length; i++) {
+            options.push({
+                value: emphasizeNumber(fromOptions[i].value, toOptions[i].value, fromRate, toRate, rate),
+                dimension,
+            });
+        }
+
+        return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
     }
 }
