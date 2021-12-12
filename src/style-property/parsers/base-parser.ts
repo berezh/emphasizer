@@ -9,14 +9,17 @@ export abstract class BaseParser {
     protected parserColor = new ColorRegexPattern();
 
     public abstract get key(): string;
+
     public abstract get propertyNames(): string[];
+
     public abstract isMatch(raw: StylePropertyType): boolean;
+
     public abstract emphasize(
         fromValue: StylePropertyType,
         toValue: StylePropertyType,
         fromRate: number,
         toRate: number,
-        rate: number,
+        rate: number
     ): string;
 
     protected firstMatch(pattern: RegExp | string, raw: string): string | undefined {
@@ -77,7 +80,7 @@ export abstract class BaseParser {
 
     // clean white-space inside colors
     protected trimColor(text: StylePropertyType): string {
-        return this.parserColor.foreachColors(this.toString(text), x => x.replace(/\s+/gi, ''));
+        return this.parserColor.foreachColors(this.toString(text), (x) => x.replace(/\s+/gi, ''));
     }
 
     protected split(text: StylePropertyType): string[] {
@@ -117,7 +120,7 @@ export abstract class BaseParser {
         to: DimentionOption[],
         fromRate: number,
         toRate: number,
-        rate: number,
+        rate: number
     ): string {
         const options: DimentionOption[] = [];
         const max = Math.max(from.length, to.length);
@@ -125,7 +128,7 @@ export abstract class BaseParser {
         const fromOptions = this.fixedOptions(from, max);
         const toOptions = this.fixedOptions(to, max);
 
-        const dimension = [...fromOptions.map(x => x.dimension)].find(x => x);
+        const dimension = [...fromOptions.map((x) => x.dimension)].find((x) => x);
 
         for (let i = 0; i < fromOptions.length; i++) {
             options.push({
@@ -134,6 +137,6 @@ export abstract class BaseParser {
             });
         }
 
-        return options.map(x => `${x.value}${x.dimension || ''}`).join(' ');
+        return options.map((x) => `${x.value}${x.dimension || ''}`).join(' ');
     }
 }

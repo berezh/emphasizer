@@ -5,7 +5,7 @@ function emphasizeStyleBase(
     to: React.CSSProperties,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): React.CSSProperties {
     const result: React.CSSProperties = {};
 
@@ -18,7 +18,7 @@ function emphasizeStyleBase(
                 (to as any)[key],
                 fromRate,
                 toRate,
-                rate,
+                rate
             );
         }
     }
@@ -29,21 +29,21 @@ function emphasizeStyleBase(
 function emphasizeStyle(
     fromStyle: React.CSSProperties,
     toStyle: React.CSSProperties,
-    rate: number,
+    rate: number
 ): React.CSSProperties;
 function emphasizeStyle(
     fromStyle: React.CSSProperties,
     toStyle: React.CSSProperties,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): React.CSSProperties;
 function emphasizeStyle(
     p1: React.CSSProperties,
     p2: React.CSSProperties,
     p3: number,
     p4?: number,
-    p5?: number,
+    p5?: number
 ): React.CSSProperties {
     if (typeof p4 === 'number' && typeof p5 === 'number') {
         return emphasizeStyleBase(p1, p2, p3, p4, p5);

@@ -5,7 +5,7 @@ function emphasizeNumberBase(
     toValue: number,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): number {
     const valueDirection = fromValue <= toValue;
     const minValue = Math.min(fromValue, toValue);

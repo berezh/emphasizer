@@ -13,8 +13,8 @@ it('style: simple', () => {
                 margin: '6px 6px',
                 color: '#888888',
             },
-            0.5,
-        ),
+            0.5
+        )
     ).toMatchObject({
         width: '10px',
         margin: '4px 4px',
@@ -31,8 +31,8 @@ it('style: number', () => {
             {
                 fontSize: 12,
             },
-            0.5,
-        ),
+            0.5
+        )
     ).toMatchObject({
         fontSize: 10,
     });

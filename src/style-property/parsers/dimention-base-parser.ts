@@ -13,7 +13,7 @@ export abstract class DimentionBaseParser extends BaseParser {
         toValue: StylePropertyType,
         fromRate: number,
         toRate: number,
-        rate: number,
+        rate: number
     ): string {
         const from = this.parse(fromValue);
         const to = this.parse(toValue);

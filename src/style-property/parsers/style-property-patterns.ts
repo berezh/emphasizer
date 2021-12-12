@@ -3,11 +3,11 @@ import { ColorRegexPattern } from 'jolor/lib/units';
 const colorPattern = new ColorRegexPattern();
 
 function dimentionValue(): string {
-    return '\(-\)\?\\d\+';
+    return '(-)?\\d+';
 }
 
 function hasDimentionUnit(): string {
-    return '[a-z%]\+';
+    return '[a-z%]+';
 }
 
 function anyDimentionUnit(): string {
@@ -19,7 +19,7 @@ function semicolon(): string {
 }
 
 function whiteSpace(): string {
-    return '\\s\*';
+    return '\\s*';
 }
 
 function wrapStartEnd(input: string): string {
@@ -71,8 +71,8 @@ function completeBoxShadow2(): string {
             dimention(),
             colorPattern.colorPatternString,
             boxShadowInset,
-            wrapOptional(semicolon()),
-        ),
+            wrapOptional(semicolon())
+        )
     );
 }
 
@@ -86,8 +86,8 @@ function completeBoxShadow3(): string {
             dimention(),
             colorPattern.colorPatternString,
             boxShadowInset,
-            wrapOptional(semicolon()),
-        ),
+            wrapOptional(semicolon())
+        )
     );
 }
 
@@ -102,8 +102,8 @@ function completeBoxShadow4(): string {
             dimention(),
             colorPattern.colorPatternString,
             boxShadowInset,
-            wrapOptional(semicolon()),
-        ),
+            wrapOptional(semicolon())
+        )
     );
 }
 

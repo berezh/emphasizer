@@ -7,7 +7,7 @@ function cssProperty(
     fromRate: number,
     toRate: number,
     rate: number,
-    value: string | number,
+    value: string | number
 ) {
     expect(emphasizeStyleProperty(name, from, to, fromRate, toRate, rate)).toEqual(value);
 }
@@ -42,7 +42,7 @@ it('styleProperty: dimention - px px', () => {
 
 it('styleProperty: dimention - px px px px', () => {
     expect(emphasizeStyleProperty('margin', '8px 8px 8px 8px', '12px 12px 12px 12px', 0.5)).toEqual(
-        '10px 10px 10px 10px',
+        '10px 10px 10px 10px'
     );
 });
 

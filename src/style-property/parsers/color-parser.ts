@@ -18,7 +18,7 @@ export class ColorParser extends BaseParser {
         to: StylePropertyType,
         fromRate: number,
         toRate: number,
-        rate: number,
+        rate: number
     ): string {
         return emphasizeColor(this.toString(from), this.toString(to), fromRate, toRate, rate);
     }

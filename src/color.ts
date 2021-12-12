@@ -7,7 +7,7 @@ function emphasizeColorBase(
     toValue: ColorProperty,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): ColorProperty {
     const from = new Color(fromValue);
     const to = new Color(toValue);
@@ -26,7 +26,7 @@ function emphasizeColor(
     toValue: ColorProperty,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): ColorProperty;
 function emphasizeColor(p1: ColorProperty, p2: ColorProperty, p3: number, p4?: number, p5?: number): ColorProperty {
     if (typeof p4 === 'number' && typeof p5 === 'number') {

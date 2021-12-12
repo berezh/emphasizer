@@ -9,9 +9,7 @@ export abstract class BoxShadowBaseParser extends BaseParser {
         return 'BoxShadowParser';
     }
 
-    protected parseInset(
-        text: StylePropertyType,
-    ): {
+    protected parseInset(text: StylePropertyType): {
         inset: boolean;
         restText: string;
     } {
@@ -31,7 +29,7 @@ export abstract class BoxShadowBaseParser extends BaseParser {
         toValue: StylePropertyType,
         fromRate: number,
         toRate: number,
-        rate: number,
+        rate: number
     ): string {
         const from = this.parse(fromValue);
         const to = this.parse(toValue);

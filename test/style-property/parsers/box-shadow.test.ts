@@ -14,13 +14,19 @@ it('BoxShadow2Parser: isMatch', () => {
 
 it('BoxShadow2Parser: parse', () => {
     expect(new BoxShadow2Parser().parse('1px 2px red')).toMatchObject<BoxShadowOption>({
-        dimentions: [{ value: 1, dimension: 'px' }, { value: 2, dimension: 'px' }],
+        dimentions: [
+            { value: 1, dimension: 'px' },
+            { value: 2, dimension: 'px' },
+        ],
         color: 'red',
         inset: false,
     });
 
     expect(new BoxShadow2Parser().parse('inset 1px 2px #111')).toMatchObject<BoxShadowOption>({
-        dimentions: [{ value: 1, dimension: 'px' }, { value: 2, dimension: 'px' }],
+        dimentions: [
+            { value: 1, dimension: 'px' },
+            { value: 2, dimension: 'px' },
+        ],
         color: '#111',
         inset: true,
     });

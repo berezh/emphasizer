@@ -8,7 +8,7 @@ function emphasizeStylePropertyBase(
     toValue: string | number | undefined,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): string | number | undefined {
     if (typeof fromValue === 'number' && typeof toValue === 'number') {
         return emphasizeNumber(fromValue, toValue, fromRate, toRate, rate);
@@ -54,7 +54,7 @@ function emphasizeStyleProperty(
     name: string,
     fromValue: string | number | undefined,
     toValue: string | number | undefined,
-    rate: number,
+    rate: number
 ): string | number | undefined;
 function emphasizeStyleProperty(
     name: string,
@@ -62,7 +62,7 @@ function emphasizeStyleProperty(
     toValue: string | number | undefined,
     fromRate: number,
     toRate: number,
-    rate: number,
+    rate: number
 ): string | number | undefined;
 function emphasizeStyleProperty(
     p0: string,
@@ -70,7 +70,7 @@ function emphasizeStyleProperty(
     p2: string | number | undefined,
     p3: number,
     p4?: number,
-    p5?: number,
+    p5?: number
 ): string | number | undefined {
     if (typeof p4 === 'number' && typeof p5 === 'number') {
         return emphasizeStylePropertyBase(p0, p1, p2, p3, p4, p5);
