@@ -11,7 +11,10 @@ function emphasizeNumberBase(fromValue: number, toValue: number, fromRate: numbe
   const maxRate = Math.max(fromRate, toRate);
   const rateRange = maxRate - minRate;
 
-  let valueDelta = (valueRange / rateRange) * (rate - minRate);
+  let valueDelta = 0;
+  if (rateRange !== 0) {
+    valueDelta = (valueRange / rateRange) * (rate - minRate);
+  }
   // to fixed 2
   valueDelta = Math.round(valueDelta * 100) / 100;
 
