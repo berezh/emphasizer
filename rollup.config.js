@@ -1,20 +1,12 @@
-import typescript from "rollup-plugin-typescript2";
-import { uglify } from "rollup-plugin-uglify";
+import { obfuscator } from "rollup-obfuscator";
+import typescript from "@rollup/plugin-typescript";
 
 import pkg from "./package.json";
 
-const plugins = [
-  typescript({
-    typescript: require("typescript"),
-  }),
-];
+const plugins = [typescript()];
 
 if (process.env.BUILD === "production") {
-  plugins.push(
-    uglify({
-      nameCache: {},
-    })
-  );
+  plugins.push(obfuscator());
 }
 
 export default [
@@ -23,6 +15,9 @@ export default [
     dest: "index.js",
     external: Object.keys(pkg.peerDependencies || {}),
     plugins,
-    output: [{ file: pkg.main, format: "cjs" }],
+    output: [
+      { file: pkg.main, format: "cjs" },
+      { file: pkg.module, format: "esm" },
+    ],
   },
 ];
